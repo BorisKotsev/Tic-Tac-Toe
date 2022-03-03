@@ -4,9 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
+
 import javax.swing.JOptionPane;
 
 public class View extends JFrame
@@ -17,13 +15,6 @@ public class View extends JFrame
 
     private JButton[][] board;
 
-    private boolean winner;
-
-    private JMenuBar menuBar;
-    private JMenu menu;
-    private JMenuItem quit;
-    private JMenuItem newGame;
-
     public View()
     {
         super();
@@ -33,65 +24,14 @@ public class View extends JFrame
         
         setTitle("Tic Tac Toe");
         setSize(500, 500);
-        setResizable(false);//!
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);//EXIT_ON_CLOSE
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
 
         playerOnTurn = "X";
 
         board = new JButton[3][3];
 
-        winner = false;
-
         createBoard();
-       // createMenuBar();
-    }
-
-    private void createMenuBar()
-    {
-        menuBar = new JMenuBar();
-        menu = new JMenu("File");
-
-        newGame = new JMenuItem("New Game");
-
-        newGame.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e) 
-            {
-               reset();
-            }
-        });
-
-        quit = new JMenuItem("Quit");
-
-        quit.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e) 
-            {
-               System.exit(0);
-            }
-        });
-
-        menu.add(newGame);
-        menu.add(quit);
-
-        menuBar.add(menu);
-
-        setJMenuBar(menuBar);
-    }
-
-    private void reset()
-    {
-        playerOnTurn = "X";
-
-        for(int i = 0; i < 3; i ++)
-        {
-            for(int j = 0; j < 3; j ++)
-            {
-                board[i][j].setText("");
-                winner = false;
-            }
-        }
     }
 
     private void createBoard()
@@ -109,10 +49,9 @@ public class View extends JFrame
                 {
 					public void actionPerformed(ActionEvent e) 
 					{
-						if(((JButton)e.getSource()).getText().equals("") && !winner) 
+						if(((JButton)e.getSource()).getText().equals("") && !winner()) 
 						{
 							button.setText(playerOnTurn);
-							winner();
 							setPlayerOnTurn();
 						}
 					}
@@ -135,22 +74,27 @@ public class View extends JFrame
     	}
     }
 
-    private void winner()
+    private boolean winner()
     {
         if(board[0][0].getText().equals(playerOnTurn) && board[1][0].getText().equals(playerOnTurn) && board[2][0].getText().equals(playerOnTurn))
         {
             JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
-            winner = true;
+            
+            return true;
         }
         else if(board[0][1].getText().equals(playerOnTurn) && board[1][1].getText().equals(playerOnTurn) && board[2][1].getText().equals(playerOnTurn))
         {
             JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
-            winner = true;
+            
+            return true;
         }
         else if(board[0][2].getText().equals(playerOnTurn) && board[1][2].getText().equals(playerOnTurn) && board[2][2].getText().equals(playerOnTurn))
         {
             JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
-            winner = true;
+            
+            return true;
         }
+
+        return false;
     }
 }
