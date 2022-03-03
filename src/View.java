@@ -13,7 +13,7 @@ public class View extends JFrame
     
     private String playerOnTurn;
 
-    private JButton[][] board;
+    private JButton[] board;
 
     public View()
     {
@@ -29,36 +29,33 @@ public class View extends JFrame
 
         playerOnTurn = "X";
 
-        board = new JButton[3][3];
+        board = new JButton[9];
 
         createBoard();
     }
 
     private void createBoard()
     {
-        for(int i = 0; i < 3; i ++)
+        for(int i = 0; i < board.length; i ++)
         {
-            for(int j = 0; j < 3; j ++)
-            {
-                JButton button = new JButton();
-                button.setFont(new Font("Arial", Font.PLAIN, 100));
-                
-                board[i][j] = button;
+            JButton button = new JButton();
+            button.setFont(new Font("Arial", Font.PLAIN, 100));
+            
+            board[i] = button;
 
-                button.addActionListener(new ActionListener()
+            button.addActionListener(new ActionListener()
+            {
+                public void actionPerformed(ActionEvent e) 
                 {
-					public void actionPerformed(ActionEvent e) 
-					{
-						if(((JButton)e.getSource()).getText().equals("") && !winner()) 
-						{
-							button.setText(playerOnTurn);
-							setPlayerOnTurn();
-						}
-					}
-                });
-                
-                pane.add(button);
-            }
+                    if(((JButton)e.getSource()).getText().equals("") && !checkForWinner()) 
+                    {
+                        button.setText(playerOnTurn);
+                        setPlayerOnTurn();
+                    }
+                }
+            });
+            
+            pane.add(button);  
         }
     }
 
@@ -74,21 +71,51 @@ public class View extends JFrame
     	}
     }
 
-    private boolean winner()
-    {
-        if(board[0][0].getText().equals(playerOnTurn) && board[1][0].getText().equals(playerOnTurn) && board[2][0].getText().equals(playerOnTurn))
+    private boolean checkForWinner()
+    {    
+        if(board[0].getText().equals(playerOnTurn) && board[1].getText().equals(playerOnTurn) && board[2].getText().equals(playerOnTurn))
         {
             JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
             
             return true;
         }
-        else if(board[0][1].getText().equals(playerOnTurn) && board[1][1].getText().equals(playerOnTurn) && board[2][1].getText().equals(playerOnTurn))
+        else if(board[3].getText().equals(playerOnTurn) && board[4].getText().equals(playerOnTurn) && board[5].getText().equals(playerOnTurn))
         {
             JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
             
             return true;
         }
-        else if(board[0][2].getText().equals(playerOnTurn) && board[1][2].getText().equals(playerOnTurn) && board[2][2].getText().equals(playerOnTurn))
+        else if(board[6].getText().equals(playerOnTurn) && board[7].getText().equals(playerOnTurn) && board[8].getText().equals(playerOnTurn))
+        {
+            JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
+            
+            return true;
+        }
+        else if(board[0].getText().equals(playerOnTurn) && board[3].getText().equals(playerOnTurn) && board[6].getText().equals(playerOnTurn))
+        {
+            JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
+            
+            return true;
+        }
+        else if(board[1].getText().equals(playerOnTurn) && board[4].getText().equals(playerOnTurn) && board[7].getText().equals(playerOnTurn))
+        {
+            JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
+            
+            return true;
+        }
+        else if(board[2].getText().equals(playerOnTurn) && board[5].getText().equals(playerOnTurn) && board[8].getText().equals(playerOnTurn))
+        {
+            JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
+            
+            return true;
+        }
+        else if(board[0].getText().equals(playerOnTurn) && board[4].getText().equals(playerOnTurn) && board[8].getText().equals(playerOnTurn))
+        {
+            JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
+            
+            return true;
+        }
+        if(board[2].getText().equals(playerOnTurn) && board[4].getText().equals(playerOnTurn) && board[6].getText().equals(playerOnTurn))
         {
             JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
             
