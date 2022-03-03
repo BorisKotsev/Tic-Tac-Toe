@@ -17,6 +17,8 @@ public class View extends JFrame
 
     private boolean checkForWinner;
 
+    private int clickedButtons;
+
     public View()
     {
         super();
@@ -30,6 +32,8 @@ public class View extends JFrame
         setVisible(true);
 
         playerOnTurn = "X";
+
+        clickedButtons = 0;
 
         board = new JButton[9];
 
@@ -54,6 +58,8 @@ public class View extends JFrame
                         button.setText(playerOnTurn);
                         checkForWinner();
                         setPlayerOnTurn();
+
+                        clickedButtons ++;
                     }
                 }
             });
@@ -123,6 +129,12 @@ public class View extends JFrame
             JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
             
             checkForWinner = true;
+        }
+
+        if(clickedButtons == 8)
+        {
+            JOptionPane.showMessageDialog(null, "There is no winner");
+            System.exit(0);
         }
     }
 }
