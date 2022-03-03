@@ -87,48 +87,64 @@ public class View extends JFrame
             JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
             
             checkForWinner = true;
+
+            System.exit(0);
         }
         else if(board[3].getText().equals(playerOnTurn) && board[4].getText().equals(playerOnTurn) && board[5].getText().equals(playerOnTurn))
         {
             JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
             
             checkForWinner = true;
+
+            System.exit(0);
         }
         else if(board[6].getText().equals(playerOnTurn) && board[7].getText().equals(playerOnTurn) && board[8].getText().equals(playerOnTurn))
         {
             JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
             
             checkForWinner = true;
+            
+            System.exit(0);
         }
         else if(board[0].getText().equals(playerOnTurn) && board[3].getText().equals(playerOnTurn) && board[6].getText().equals(playerOnTurn))
         {
             JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
             
             checkForWinner = true;
+
+            System.exit(0);
         }
         else if(board[1].getText().equals(playerOnTurn) && board[4].getText().equals(playerOnTurn) && board[7].getText().equals(playerOnTurn))
         {
             JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
             
             checkForWinner = true;
+            
+            System.exit(0);
         }
         else if(board[2].getText().equals(playerOnTurn) && board[5].getText().equals(playerOnTurn) && board[8].getText().equals(playerOnTurn))
         {
             JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
             
-            checkForWinner = true;
+            checkForWinner = true;   
+
+            System.exit(0);
         }
         else if(board[0].getText().equals(playerOnTurn) && board[4].getText().equals(playerOnTurn) && board[8].getText().equals(playerOnTurn))
         {
             JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
             
             checkForWinner = true;
+
+            System.exit(0);
         }
         if(board[2].getText().equals(playerOnTurn) && board[4].getText().equals(playerOnTurn) && board[6].getText().equals(playerOnTurn))
         {
             JOptionPane.showMessageDialog(null, "Player " + playerOnTurn + " has won!");
             
             checkForWinner = true;
+
+            System.exit(0);
         }
 
         if(clickedButtons == 8)
